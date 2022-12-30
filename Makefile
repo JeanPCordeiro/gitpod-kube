@@ -1,0 +1,10 @@
+DOCKER_USERNAME ?= jpcordeiro
+APPLICATION_NAME ?= gitpod-kube
+APPLICATION_RELEASE ?= latest
+ 
+build:
+	docker build --tag ${DOCKER_USERNAME}/${APPLICATION_NAME}:${APPLICATION_RELEASE} .
+
+push:
+	docker login -u ${DOCKER_USERNAME}
+	docker push ${DOCKER_USERNAME}/${APPLICATION_NAME}:${APPLICATION_RELEASE}
